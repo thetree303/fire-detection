@@ -1,0 +1,22 @@
+{
+  "short_name": "FireDetector",
+  "name": "Fire Detector",
+  "description": "Smart AI Fire Alarm System",
+  "icons": [
+    {
+      "src": "/icon-192x192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/icon-512x512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "/",
+  "background_color": "#0f1117",
+  "theme_color": "#f97316",
+  "display": "standalone",
+  "orientation": "portrait"
+}

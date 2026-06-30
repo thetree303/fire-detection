@@ -1,0 +1,368 @@
+/* ========================================
+   SIDEBAR — Dark themed, 3-column layout
+   ======================================== */
+.sidebar {
+  width: var(--sidebar-width);
+  min-width: var(--sidebar-width);
+  background: var(--sidebar-bg);
+  border-right: 1px solid var(--sidebar-border);
+  display: flex;
+  flex-direction: column;
+  height: 100dvh;
+  position: sticky;
+  top: 0;
+  overflow: hidden;
+  z-index: 200;
+  flex-shrink: 0;
+  /* Transition để drawer trượt mượt trên mobile */
+  transition: transform 0.3s ease;
+}
+
+/* ── Header / Logo ── */
+.sidebar-header {
+  padding: calc(20px + env(safe-area-inset-top)) 16px 18px;
+  border-bottom: 1px solid var(--sidebar-border);
+  flex-shrink: 0;
+}
+
+.sidebar-brand {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+}
+
+.sidebar-brand-icon {
+  width: 36px;
+  height: 36px;
+  background: linear-gradient(135deg, #f97316, #e53e3e);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 2px 12px rgba(229, 62, 62, 0.4);
+}
+
+.sidebar-brand-text {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+/* Tăng từ 20px → 22px */
+.sidebar-brand-name {
+  font-size: 22px;
+  font-weight: 900;
+  color: var(--sidebar-text-primary);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+/* Tăng từ 12px → 13px */
+.sidebar-brand-sub {
+  font-size: 13px;
+  color: var(--sidebar-text-muted);
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+/* ── Nav scroll area ── */
+.sidebar-nav {
+  flex: 1;
+  overflow-y: auto;
+  padding: 8px 0 4px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--sidebar-border) transparent;
+}
+
+.sidebar-nav::-webkit-scrollbar {
+  width: 4px;
+}
+
+.sidebar-nav::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.sidebar-nav::-webkit-scrollbar-thumb {
+  background: var(--sidebar-border);
+  border-radius: 2px;
+}
+
+/* ── Section label ── */
+/* Tăng từ 10px → 12px */
+.nav-section-label {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--sidebar-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  padding: 14px 16px 5px;
+}
+
+/* ── Nav Items (Management links) ── */
+/* Tăng từ 13px → 15px */
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 11px 16px;
+  color: var(--sidebar-text-secondary);
+  font-size: 15px;
+  font-weight: 500;
+  transition: background 0.15s, color 0.15s;
+  border-left: 3px solid transparent;
+  cursor: pointer;
+  text-decoration: none;
+  background: none;
+  border-top: none;
+  border-right: none;
+  border-bottom: none;
+  width: 100%;
+  text-align: left;
+  border-radius: 0;
+}
+
+.nav-item:hover {
+  color: var(--sidebar-text-primary);
+  background: var(--sidebar-hover);
+}
+
+.nav-item.active {
+  color: #f97316;
+  background: rgba(249, 115, 22, 0.12);
+  border-left-color: #f97316;
+  font-weight: 600;
+}
+
+.nav-item-icon {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  opacity: 0.7;
+}
+
+.nav-item.active .nav-item-icon,
+.nav-item:hover .nav-item-icon {
+  opacity: 1;
+}
+
+/* ── Room Group ── */
+.room-group {
+  margin-bottom: 1px;
+}
+
+/* Tăng từ 13px → 15px */
+.room-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 9px 16px;
+  color: var(--sidebar-text-secondary);
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+  border-left: 3px solid transparent;
+  user-select: none;
+}
+
+.room-toggle:hover {
+  color: var(--sidebar-text-primary);
+  background: var(--sidebar-hover);
+}
+
+.room-toggle-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+  flex: 1;
+}
+
+.room-icon {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  opacity: 0.55;
+}
+
+.room-toggle-name {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Tăng từ 10px → 12px */
+.room-cam-count {
+  font-size: 12px;
+  color: var(--sidebar-text-muted);
+  background: var(--sidebar-border);
+  border-radius: 10px;
+  padding: 1px 7px;
+  flex-shrink: 0;
+}
+
+.room-chevron {
+  font-size: 9px;
+  color: var(--sidebar-text-muted);
+  transition: transform 0.22s ease;
+  flex-shrink: 0;
+  margin-left: 6px;
+}
+
+.room-chevron.open {
+  transform: rotate(90deg);
+}
+
+/* ── Camera List (collapsible) ── */
+.camera-list {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.28s ease;
+}
+
+.camera-list.open {
+  max-height: 600px;
+}
+
+/* Tăng từ 12.5px → 14px */
+.camera-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 16px 7px 34px;
+  color: var(--sidebar-text-muted);
+  font-size: 14px;
+  font-weight: 400;
+  transition: background 0.15s, color 0.15s;
+  border-left: 3px solid transparent;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.camera-item:hover {
+  color: var(--sidebar-text-primary);
+  background: var(--sidebar-hover);
+}
+
+.camera-item.active {
+  color: #f97316;
+  background: rgba(249, 115, 22, 0.1);
+  border-left-color: #f97316;
+  font-weight: 600;
+}
+
+.camera-status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--sidebar-text-muted);
+  flex-shrink: 0;
+  transition: background 0.2s;
+}
+
+.camera-item.active .camera-status-dot {
+  background: #f97316;
+}
+
+.camera-status-dot.online {
+  background: #22c55e;
+  box-shadow: 0 0 0 2px rgba(34, 197, 94, 0.2);
+}
+
+.camera-status-dot.offline {
+  background: #6b7280;
+}
+
+/* ── Loading skeleton ── */
+.sidebar-loading {
+  padding: 8px 16px;
+}
+
+.skeleton-line {
+  height: 12px;
+  background: var(--sidebar-hover);
+  border-radius: 5px;
+  margin-bottom: 10px;
+  animation: skel-shimmer 1.4s infinite;
+}
+
+.skeleton-line.short {
+  width: 55%;
+}
+
+.skeleton-line.indent {
+  margin-left: 18px;
+  width: 65%;
+}
+
+@keyframes skel-shimmer {
+
+  0%,
+  100% {
+    opacity: 0.4;
+  }
+
+  50% {
+    opacity: 0.9;
+  }
+}
+
+/* ── Footer ── */
+.sidebar-footer {
+  padding: 14px 16px;
+  border-top: 1px solid var(--sidebar-border);
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* Tăng từ 12px → 14px */
+.btn-logout {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 90%;
+  margin: 20px 13px;
+  padding: 12px;
+  background: rgba(229, 62, 62, 0.12);
+  border: 1px solid var(--red-dim);
+  border-radius: 100px;
+  color: var(--red);
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-align: center;
+}
+
+.btn-logout:hover {
+  background: rgba(229, 62, 62, 0.3);
+  color: #e53e3e;
+}
+
+/* =============================================
+   RESPONSIVE — Mobile (≤ 768px)
+   Sidebar chuyển thành Off-Canvas Drawer
+   ============================================= */
+@media (max-width: 768px) {
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100dvh;
+    z-index: 200;
+    /* Ẩn ra ngoài bên trái mặc định */
+    transform: translateX(-100%);
+  }
+
+  /* Khi mở drawer: slide vào */
+  .sidebar.is-open {
+    transform: translateX(0);
+    box-shadow: 4px 0 24px rgba(0, 0, 0, 0.4);
+  }
+}

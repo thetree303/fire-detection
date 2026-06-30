@@ -1,0 +1,12 @@
+{
+	"folders": [
+		{
+			"path": "arduino/ESP32_CAM_fire_01"
+		},
+		{
+			"name": "ESP32_fire_02",
+			"path": "arduino/ESP32_fire_02"
+		}
+	],
+	"settings": {}
+}
